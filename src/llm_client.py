@@ -12,7 +12,6 @@ class LLMClient:
         if not self.api_key:
             raise ValueError("GOOGLE_API_KEY is not set. Please check your environment variables or .env file.")
         genai.configure(api_key=self.api_key)
-
         # Choose a model
         # gemini-1.5-flash: A fast, efficient, and versatile model.
         # gemini-1.5-pro: A more powerful model with a larger context window, ideal for complex tasks.

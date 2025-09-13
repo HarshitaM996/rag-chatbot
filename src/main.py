@@ -14,10 +14,5 @@ def main():
     print(f"User: {user_message}")
     print(f"Model: {response}")
 
-    user_message_2 = "And what's the capital of Germany?"
-    response_2 = client.chat(user_message_2, history=[user_message])
-    print(f"User: {user_message_2}")
-    print(f"Model: {response_2}")
-
 if __name__ == "__main__":
     main()

@@ -1,3 +1,7 @@
 requests
 python-dotenv
 google.generativeai
+langchain
+langchain-core
+langchain-community
+chromadb

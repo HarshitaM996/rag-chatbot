@@ -13,8 +13,6 @@ class LLMClient:
             raise ValueError("GOOGLE_API_KEY is not set. Please check your environment variables or .env file.")
         genai.configure(api_key=self.api_key)
         # Choose a model
-        # gemini-1.5-flash: A fast, efficient, and versatile model.
-        # gemini-1.5-pro: A more powerful model with a larger context window, ideal for complex tasks.
         self.model = genai.GenerativeModel('gemini-1.5-flash')
 
     def generate_response(self, prompt):
@@ -26,6 +24,8 @@ class LLMClient:
         # Handle multi-turn conversations (chat history)
         if history is None:
             history = []
-        chat = self.model.start_chat(history=history)
+        # Ensure history is formatted correctly
+        formatted_history = [{"role": h["role"], "parts": [h["content"]]} for h in history]
+        chat = self.model.start_chat(history=formatted_history)
         response = chat.send_message(user_message)
         return response.text
